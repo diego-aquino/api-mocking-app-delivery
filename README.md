@@ -1,123 +1,123 @@
-# Sistema de Entregas - Aplicando Mocks de API
+# Delivery System - Applying API Mocks
 
-Esta é uma calculadora simplificada de fretes. Ela recebe o nomes de uma cidade
-de origem e outra de destino, o peso e o volume do item e retorna o custo do
-frete de entrega. A aplicação consulta uma **API de localização** para obter a
-distância em linha reta entre as cidades e utiliza esse resultado no cálculo do
-frente.
+This is a simplified freight calculator. It receives the names of an origin city
+and a destination city, the weight and volume of the item, and returns the
+delivery freight cost. The application queries a **location API** to get the
+straight-line distance between the cities and uses this result in the freight
+calculation.
 
-## 1. Acesso
+## 1. Access
 
-### 1.1. Abrindo o projeto no Stackblitz
+### 1.1. Opening the project in Stackblitz
 
-Primeiramente, abra este projeto usando o link a seguir:
+First, open this project using the following link:
 
-[![Abrir no Stackblitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/diego-aquino/api-mocking-app-delivery?startScript=dev&file=README.md)
+[![Open in Stackblitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/diego-aquino/api-mocking-app-delivery?startScript=dev&file=README.md)
 
-Esse link abrirá o editor do Stackblitz no seu navegador, semelhante ao
-[VS Code](https://code.visualstudio.com), instalará as dependências e iniciará o
-servidor.
+This link will open the Stackblitz editor in your browser, similar to
+[VS Code](https://code.visualstudio.com), install the dependencies, and start
+the server.
 
-No lado esquerdo, estará a estrutura de pastas do projeto, seguida de um editor
-e terminal no centro e um mini-navegador no lado direito.
+On the left side, you will see the project folder structure, followed by an
+editor and terminal in the center, and a mini-browser on the right side.
 
-![Projeto aberto no Stackblitz](./docs/images/project-opened-on-stackblitz.png)
+![Project opened in Stackblitz](./docs/images/project-opened-on-stackblitz.png)
 
-No canto superior esquerdo, clique em "Fork" para salvar o projeto no seu perfil
-do Stackblitz. Será necessário fazer login.
+In the upper left corner, click on "Fork" to save the project to your Stackblitz
+profile. You will need to log in.
 
-![Botão para cópia do projeto no Stackblitz](./docs/images/stackblitz-fork.png)
+![Button to copy the project in Stackblitz](./docs/images/stackblitz-fork.png)
 
-## 2. Projeto
+## 2. Project
 
-Este é um projeto backend que utiliza [Node.js](https://nodejs.org) com
+This is a backend project that uses [Node.js](https://nodejs.org) with
 [TypeScript](https://www.typescriptlang.org), [Fastify](https://fastify.dev),
-[Axios](https://axios-http.com) e [Vitest](https://vitest.dev).
+[Axios](https://axios-http.com), and [Vitest](https://vitest.dev).
 
-Arquivos importantes:
+Important files:
 
-- [`src/server/app.ts`](./src/server/app.ts): arquivo principal da aplicação,
-  onde o servidor está implementado.
-- [`src/clients/LocationClient.ts`](./src/clients/LocationClient.ts): classe que
-  faz as chamadas HTTP para a API de localização.
-- [`src/utils/shipping.ts`](./src/utils/shipping.ts): implementação da lógica de
-  cálculo do frete.
-- [`tests/shipping.test.ts`](./tests/shipping.test.ts): arquivo para os testes
-  do cálculo do frete.
+- [`src/server/app.ts`](./src/server/app.ts): main application file where the
+  server is implemented.
+- [`src/clients/LocationClient.ts`](./src/clients/LocationClient.ts): class that
+  makes HTTP calls to the location API.
+- [`src/utils/shipping.ts`](./src/utils/shipping.ts): implementation of the
+  freight calculation logic.
+- [`tests/shipping.test.ts`](./tests/shipping.test.ts): file for freight
+  calculation tests.
 
-Comandos úteis:
+Useful commands:
 
-- `npm install`: instala as **dependências** do projeto (executado
-  automaticamente ao abrir o projeto no Stackblitz).
-- `npm run dev`: inicia o **servidor** em modo de desenvolvimento.
-- `npm run test`: executa os **testes** da aplicação em modo watch.
-- `npm run types:check`: verifica se há **erros de tipo** no código.
+- `npm install`: installs the **project dependencies** (automatically executed
+  when opening the project in Stackblitz).
+- `npm run dev`: starts the **server** in development mode.
+- `npm run test`: runs the **application tests** in watch mode.
+- `npm run types:check`: checks for **type errors** in the code.
 
-A URL da API de localização está declarada no arquivo
-[`.env.development`](./.env.development). Ela está disponível em duas versões:
+The location API URL is declared in the [`.env.development`](./.env.development)
+file. It is available in two versions:
 
-| Versão | URL                                    |
-| ------ | -------------------------------------- |
-| v1     | https://v1-location-d8b1dd3.vercel.app |
-| v2     | https://v2-location-d8b1dd3.vercel.app |
+| Version | URL                                    |
+| ------- | -------------------------------------- |
+| v1      | https://v1-location-d8b1dd3.vercel.app |
+| v2      | https://v2-location-d8b1dd3.vercel.app |
 
 > [!TIP]
 >
-> Acesse os links acima para ver a documentação de cada versão da API.
+> Access the links above to see the documentation for each version of the API.
 
-## 3. Atividade
+## 3. Activity
 
-### Parte 1: Criação de testes
+### Part 1: Creating tests
 
-Nesta primeira parte, vamos implementar uma suite de testes para esta aplicação.
-Você deve utilizar **uma** das duas ferramentas de mocks de API planejadas,
-[MSW](https://github.com/mswjs/msw) ou
-[Zimic](https://github.com/zimicjs/zimic), de acordo com a alocação da sua dupla
-no Sistema de Entregas
-[nesta planilha](https://docs.google.com/spreadsheets/d/1fOp-6efUEp4KZx8UI9w0EuewHeWP1kIhWzWfViSihW0/edit?usp=sharing).
+In this first part, we will implement a test suite for this application. You
+should use **one** of the two planned API mock tools,
+[MSW](https://github.com/mswjs/msw) or
+[Zimic](https://github.com/zimicjs/zimic), according to your pair's allocation
+in the Delivery System
+[in this spreadsheet](https://docs.google.com/spreadsheets/d/1fOp-6efUEp4KZx8UI9w0EuewHeWP1kIhWzWfViSihW0/edit?usp=sharing).
 
-Você deverá implementar **quatro** casos de teste no arquivo
-[`tests/shipping.test.ts`](./tests/shipping.test.ts). A escolha de quais
-aspectos da aplicação testar é livre, considerando as diretrizes a seguir:
+You should implement **four** test cases in the
+[`tests/shipping.test.ts`](./tests/shipping.test.ts) file. The choice of which
+aspects of the application to test is free, considering the following
+guidelines:
 
-1. Todos os testes devem realizar pelo menos uma requisição à aplicação.
-2. Todos os testes devem exercitar comportamentos que fazem uso de chamadas à
-   API de localização. Porém, a API não deve ser acessada diretamente nos seus
-   testes, ou seja, todas as respostas devem ser simuladas pelos mocks.
-3. Pelo menos um caso de teste deve verificar uma resposta de sucesso da
-   aplicação (códigos de status
+1. All tests must make at least one request to the application.
+2. All tests must exercise behaviors that use calls to the location API.
+   However, the API should not be accessed directly in your tests, meaning all
+   responses should be simulated by the mocks.
+3. At least one test case must verify a successful response from the application
+   (status codes
    [2XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses)).
-4. Pelo menos um caso de teste deve verificar uma resposta de erro da aplicação
-   (códigos de status
+4. At least one test case must verify an error response from the application
+   (status codes
    [4XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses)
-   ou
+   or
    [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses)).
 
-Para executar os testes, utilize o comando `npm run test`. Com esse comando
-rodando, a suite será reexecutada automaticamente ao editar a aplicação ou os
-testes.
+To run the tests, use the command `npm run test`. With this command running, the
+suite will be re-executed automatically when editing the application or tests.
 
-![Executando os testes no Stackblitz](./docs/images/stackblitz-tests.png)
+![Running tests in Stackblitz](./docs/images/stackblitz-tests.png)
 
-Após implementar os casos descritos acima, salve o link de compartilhamento do
-projeto. Você deverá enviá-lo no formulário de entrega.
+After implementing the cases described above, save the project sharing link. You
+will need to submit it in the delivery form.
 
-![Compartilhando o projeto no Stackblitz](./docs/images/stackblitz-sharing.png)
+![Sharing the project in Stackblitz](./docs/images/stackblitz-sharing.png)
 
-### Parte 2: Migração para a versão 2 da API
+### Part 2: Migration to version 2 of the API
 
-Nesta segunda parte, vamos migrar o projeto para utilizar a versão 2 da API de
-localização, que possui certas mudanças em relação à versão 1.
+In this second part, we will migrate the project to use version 2 of the
+location API, which has some changes compared to version 1.
 
-Antes de iniciar, crie uma cópia do projeto que você utilizou na parte 1. Para
-isso, clique no botão "Fork" no canto superior. O objetivo é manter o projeto da
-parte 1 inalterado e utilizar uma cópia dele para migrar para a versão 2 da API.
+Before starting, create a copy of the project you used in part 1. To do this,
+click the "Fork" button in the upper corner. The goal is to keep the part 1
+project unchanged and use a copy of it to migrate to version 2 of the API.
 
-![Botão para cópia do projeto no Stackblitz](./docs/images/stackblitz-refork.png)
+![Button to copy the project in Stackblitz](./docs/images/stackblitz-refork.png)
 
-Na cópia criada, você deve alterar o arquivo
-[`.env.development`](./.env.development) para utilizar a URL da versão 2 da API,
-atualizando o valor da variável `LOCATION_API_URL` para o endereço abaixo.
+In the created copy, you should change the
+[`.env.development`](./.env.development) file to use the URL of version 2 of the
+API, updating the `LOCATION_API_URL` variable to the address below.
 
 `.env.development`:
 
@@ -125,36 +125,36 @@ atualizando o valor da variável `LOCATION_API_URL` para o endereço abaixo.
 LOCATION_API_URL=https://v2-location-d8b1dd3.vercel.app
 ```
 
-Se o servidor ou o comando de testes estiverem rodando, você deve reiniciá-los
-para que a nova URL seja lida.
+If the server or test command is running, you should restart them to read the
+new URL.
 
-Entre as versões 1 e 2 da API, as seguintes modificações ocorreram:
+Between versions 1 and 2 of the API, the following changes occurred:
 
-- A rota `/cities/distances`, em que os identificadores das cidades origem e
-  destino eram definidas por meio de parâmetros de query, foi modificada para
-  `/cities/:originCityId}/distances/cities/:destinationCityId`, movendo os
-  identificadores para parâmetros de rota;
-- No retorno das cidades, os seguintes campos foram modificados:
-  - `stateName` e `stateCode` agora fazem parte de um objeto `state`, nas
-    propriedades `state.name` e `state.code`, respectivamente.
-  - `countryName` e `countryCode` agora fazem parte de um objeto `country`, nas
-    propriedades `country.name` e `country.code`, respectivamente.
+- The `/cities/distances` route, where the origin and destination city
+  identifiers were defined via query parameters, was changed to
+  `/cities/:originCityId}/distances/cities/:destinationCityId`, moving the
+  identifiers to route parameters;
+- In the city return, the following fields were modified:
+  - `stateName` and `stateCode` are now part of a `state` object, in the
+    properties `state.name` and `state.code`, respectively.
+  - `countryName` and `countryCode` are now part of a `country` object, in the
+    properties `country.name` and `country.code`, respectively.
 
-Agora, você deve adaptar os testes e os mocks de API para lidar com essas
-mudanças. Para executar a suite, naturalmente é necessário também alterar a
-aplicação e integrá-la à nova versão da API. Nesta atividade, o refatoramento da
-aplicação não é obrigatório, embora seja recomendado para verificar se os testes
-estão funcionando corretamente.
+Now, you should adapt the tests and API mocks to handle these changes. To run
+the suite, it is naturally necessary to also change the application and
+integrate it with the new version of the API. In this activity, refactoring the
+application is not mandatory, although it is recommended to check if the tests
+are working correctly.
 
-Após realizar as adaptações, salve o link de compartilhamento do projeto usado
-nesta parte 2. Você também deverá enviá-lo no formulário de entrega, juntamente
-com o link da parte 1.
+After making the adaptations, save the project sharing link used in this part 2.
+You will also need to submit it in the delivery form, along with the link from
+part 1.
 
-## 4. Entrega
+## 4. Delivery
 
-Após finalizar as implementações nesta aplicação e no
-[Sistema de Compartilhamento](https://github.com/diego-aquino/api-mocking-app-sharing),
-preencha o formulário de entrega com os links das partes 1 e 2. Confirme que
-todos os links estão com visibilidade pública.
+After completing the implementations in this application and in the
+[Sharing System](https://github.com/diego-aquino/api-mocking-app-sharing), fill
+out the delivery form with the links for parts 1 and 2. Confirm that all links
+are publicly visible.
 
 https://forms.gle/FP8gzzaBniawu6EV8
